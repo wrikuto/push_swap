@@ -1,87 +1,128 @@
 # push_swap_tester
 
-### Usage
+## 機能
 
-First, go to the root of your repository, which is where we can find your Makefile and do
+1. push_swapのテスト
+   - `push_swap` を実行し、`checker` を使って出力を確認します。
+     - オプションで、引数の個数、数値の範囲、テスト回数、push_swapのディレクトリを指定できます。
+2. テスト用の引数生成
+   - テスト用の引数を生成し、標準出力に出力します。
 
-```git clone https://github.com/LeoFu9487/push_swap_tester.git && cd push_swap_tester```
+## 使い方
 
+Python 3.8.2で動作を確認しています。
 
+1. リポジトリのclone
 
+   push_swapのプロジェクト内にリポジトリをcloneします。
+   ```bash
+   git clone https://github.com/nafuka11/push_swap_tester.git
+   ```
 
-To see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5), run
+1. `checker` の配置
 
-```bash basic_test.sh```
+   `checker_Mac` / `checker_linux` を使う場合
+   - 実行ファイル `push_swap` と同じディレクトリに配置し、`checker` にリネームしてください。
+   - リネーム後、 `checker` に実行権限がついていることを確認してください。
+     ```bash
+     ls -l checker
+     ```
+   - `checker` に実行権限が付いていない場合、実行権限を付与してください。
+     ```bash
+     chmod +x checker
+     ```
 
+   自分でビルドした `checker` を使う場合
+   - この手順はスキップしてください。
 
+1. `push_swap` のビルド
 
-If you want to see the test cases, check ```trace_basic```
+   - push_swap_testerは、実行ファイル `push_swap` のビルドを行いません。  
+     push_swap_testerを実行する前に `make` 等のコマンドを実行して `push_swap` をビルドするようにしてください。
 
+1. cloneしたリポジトリのディレクトリに移動
+   ```bash
+   cd push_swap_tester
+   ```
 
-After that, you can do medium and big stack test with this command
+### ヘルプ
 
-```bash loop.sh <stack size> <loop times>```
+```bash
+python3 push_swap_tester.py -h
+```
 
-For example, this is the result of the following command
+### テストの実行
 
-```bash loop.sh 100 10```
+```bash
+python3 push_swap_tester.py
+```
 
-![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
+- 引数5個の順列を作成してテストします。
+  - 順列の個数が、引数で指定したテスト回数（デフォルトは200回）を下回る場合、順列を生成します。
+  - そうでない場合はランダムな数列を生成します。
 
-And you can find those generated test cases and the output of your program in ```trace_loop```
+テストすると以下のような標準出力がされます。
+```bash
+........................................................................................................................
+---- Result ----
+max   : 10
+median: 7
+min   : 0
+See result.log for details
+```
+- checkerでOK/KOを判定します。OKなら緑色の `.` を、KOなら赤色の `F` を標準出力します。
+- push_swap命令数の最大値（max）、中央値（median）、最小値（min）を標準出力します。
+- `result.log` に詳細な情報を出力します。
 
-### Debug
+#### オプション
 
-To visualize how your program sorts numbers
+オプションで、引数の個数、数値の範囲、テスト回数、push_swapのディレクトリを指定できます。
 
-```bash debug.sh <numbers>```
+|オプション|内容|デフォルト値|
+|--|--|--|
+|-l, --len <個数>|push_swapに渡す引数の個数を指定します|5|
+|-c, --count <回数>|テストする回数を指定します|200|
+|-r, --range <最小値 最大値>|push_swapに渡す引数の範囲を指定します|`INT_MIN` `INT_MAX`|
+|-d, --dir <ディレクトリ>|push_swapのディレクトリを指定します|`..`|
+|-g, --gen|指定すると、テストをする代わりに引数を生成して標準出力します|無効|
 
-This is the result of the following command
+#### コマンド例
 
-```bash debug.sh 9 4 8 7```
+```bash
+# 引数5個のテスト（引数の値の範囲：INT_MINからINT_MAX）
+python3 push_swap_tester.py
+# 引数5個のテスト（引数の値の範囲：1から5）
+python3 push_swap_tester.py -r 1 5
 
-![debugsh](https://user-images.githubusercontent.com/70040774/119276699-d6464380-bc1b-11eb-8c03-fe01a11b494f.png)
+# 引数100個のテストを200回行う（引数の値の範囲：INT_MINからINT_MAX）
+python3 push_swap_tester.py -l 100
+# 引数100個のテストを400回行う（引数の値の範囲：INT_MINからINT_MAX）
+python3 push_swap_tester.py -l 100 -c 400
 
-To generate random numbers and visualize how your program sorts them, run  
+# 引数500個のテストを200回行う（引数の値の範囲：INT_MINからINT_MAX）
+python3 push_swap_tester.py -l 500
 
-```bash debug.sh random <stack size>```
+# ../project_dir にあるpush_swapをテスト
+python3 push_swap_tester.py -d ../project_dir
+```
 
-This is the result of the following command
+### テスト用の引数生成
 
-```bash debug.sh random 10```
+```bash
+python3 push_swap_tester.py --gen
+```
+オプションで、引数の個数、数値の範囲を指定できます。
 
-![example2](https://user-images.githubusercontent.com/70040774/118052309-cceaea80-b382-11eb-8c9d-39675e9143ba.png)
-
-To generate a permutation of numbers from 0 to n-1
-
-```bash debug.sh clean <stack size>```
-
-this is the result of the following command
-
-```bash debug.sh clean 10```
-
-![example3](https://user-images.githubusercontent.com/70040774/118052350-daa07000-b382-11eb-95e4-c8715f70cc05.png)
-
-### Result 
-
-OK : Answer Correct
-
-KO : Wrong Answer
-
-TLE : Time Limit Exceeded, please check if there is an infinite loop in your program (or you can edit the variable ```TIME_LIMIT``` in *.sh file)
-
-ERROR : Unknown Instructions
-
-leaks command not found : can't test your memory with command ```leaks``` (If you're using MacOS but still receiving this, remove ```-fsanitize=address``` flag in your Makefile )
-
-### Clean
-
-```bash clean.sh```
-
-can remove every test case and output file
-
-### Contact : 
-
-yfu@student.42lyon.fr
-
-or DM me on the slack
+#### 例
+INT_MINからINT_MAXの範囲で10個の引数を生成
+```bash
+python3 push_swap_tester.py --gen -l 10
+```
+出力
+```bash
+-1110677087 -738511178 1555694097 1972999663 989665463 -2116604533 819005173 -895360136 -613437200 1767332339
+```
+使用例
+```bash
+ARG=`python3 push_swap_tester.py --gen -l 10` ../push_swap $ARG | ../checker $ARG
+```

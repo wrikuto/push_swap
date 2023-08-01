@@ -9,6 +9,7 @@ SRCS = \
 		rotate.c \
 		swap.c \
 		sort_utils.c \
+		sort_utils_second.c \
 		sort_three_elements.c \
 		sort_five_or_four.c \
 		sort_split_insert.c \
@@ -34,6 +35,7 @@ fclean: clean
 		$(RM) $(NAME)
 
 re: fclean all
+
 
 .PHONY: all clean fclean re
 

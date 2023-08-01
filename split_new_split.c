@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_split_insert.c                                :+:      :+:    :+:   */
+/*   split_new_split.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 19:49:36 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/01 20:06:14 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,25 @@ static void	get_centers_num(t_node *stack_a, int *sp_num)
 		num[i] = get_min_more(stack_a, num[i - 1]);
 		i++;
 	}
-	sp_num[0] = num[len / 4];
-	sp_num[1] = num[len / 2];
-	sp_num[2] = num[(len / 4) * 3];
+	i = 0
+	while (i < n)
+	{
+		sp_num[i] = num[len / (n * (i + 1)];
+		j++;
+	}
 	free(num);
 }
 
-static void	groping_last(t_node **stack_a, t_node **stack_b, int mid)
-{
-	while (*stack_a != NULL)
-	{
-		if ((*stack_a)->num < mid)
-			pb(stack_a, stack_b);
-		else
-			pb_rb(stack_a, stack_b);
-	}
-}
+// static void	groping_last(t_node **stack_a, t_node **stack_b, int mid)
+// {
+// 	while (*stack_a != NULL)
+// 	{
+// 		if ((*stack_a)->num < mid)
+// 			pb(stack_a, stack_b);
+// 		else
+// 			pb_rb(stack_a, stack_b);
+// 	}
+// }
 
 static void	groping(t_node **stack_a, t_node **stack_b)
 {
