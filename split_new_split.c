@@ -6,13 +6,31 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 22:55:33 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/01 23:53:34 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 #include <stdio.h>
+
+void printList(t_node *head)
+{
+    t_node *current = head;
+    if (head == NULL)
+    {
+        printf("List is empty.\n");
+        return;
+    }
+// hode
+    do
+    {
+        printf("%d ", current->num);
+        current = current->next;
+    } while (current != head);
+
+    printf("\n");
+}
 
 static void	get_cep_num(t_node *stack_a, int *sn, size_t n)
 {

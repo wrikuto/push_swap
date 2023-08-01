@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 23:07:04 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 15:58:40 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/01 23:51:28 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	stack_len(t_node *stack)
 	size_t	len;
 	t_node	*current;
 
+	if (stack == NULL)
+		return (0);
 	len = 1;
 	current = stack->next;
 	while (current != NULL && current != stack)

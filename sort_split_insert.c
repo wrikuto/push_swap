@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 20:42:50 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/01 23:46:42 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	len_to_max(t_node *stack, int max)
 	return (count);
 }
 
-void	sort_split_insert(t_node **stack_a, t_node **stack_b)
+void	sort_split_insert_old(t_node **stack_a, t_node **stack_b)
 {
 	int	max;
 	int	len;
