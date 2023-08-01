@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 23:53:34 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 01:05:13 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,9 @@ void	push_to_b(t_node **s_a, t_node **s_b, int *sn)
 
 	j = 0;
 	count = 0;
-	len = stack_len(*s_a);
 	while (*s_a != NULL)
 	{
-			printf("J: %d\n", j);
+		len = stack_len(*s_a);
 		while (count < len)
 		{
 			if ((*s_a)->num <= sn[j])
@@ -85,7 +84,6 @@ void	push_to_b(t_node **s_a, t_node **s_b, int *sn)
 		}
 		j = j + 2;
 		count = 0;
-		len = stack_len(*s_a);
 	}
 }
 
@@ -96,8 +94,8 @@ static void	groping(t_node **stack_a, t_node **stack_b)
 	size_t	len;
 
 	len = stack_len(*stack_a);
-	if (len < 100)
-		n = 4;
+	if (len <= 200)
+		n = 9;
 	else
 		n = 4 * (len / 100);
 	sn = malloc(sizeof(int) * n);
