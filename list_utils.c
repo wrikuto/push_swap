@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:42:44 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/07/25 22:32:30 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 01:15:16 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static t_node	*new_node(int res_num)
 
 	data = malloc(sizeof(t_node));
 	if (data == NULL)
-		return (NULL);
+		exit(1);
 	data -> num = res_num;
 	data -> next = NULL;
 	data -> prev = NULL;

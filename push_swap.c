@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:34:00 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 16:28:40 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 01:20:24 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	select_sort(t_node **stack_a, t_node **stack_b)
 	else if (len == 4 || len == 5)
 		sort_five_or_four(stack_a, stack_b, len);
 	else
-		sort_split_insert(stack_a, stack_b);
+		quick_insert(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)

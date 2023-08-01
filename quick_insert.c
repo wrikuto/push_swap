@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/02 01:07:38 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 01:54:48 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	get_cep_num(t_node *stack_a, int *sn, size_t n)
 	free(num);
 }
 
-void	push_to_b(t_node **s_a, t_node **s_b, int *sn)
+static void	push_to_b(t_node **s_a, t_node **s_b, int *sn)
 {
 	int		j;
 	size_t	len;
@@ -72,8 +72,14 @@ static void	groping(t_node **stack_a, t_node **stack_b)
 	size_t	len;
 
 	len = stack_len(*stack_a);
-	if (len <= 200)
-		n = 9;
+	if (len <= 30)
+	{
+		while (*stack_a != NULL)
+			pb(stack_a, stack_b);
+		return ;
+	}
+	else if (len <= 300)
+		n = stack_len(*stack_a) / 11;
 	else
 		n = 4 * (len / 100);
 	sn = malloc(sizeof(int) * n);
@@ -99,7 +105,7 @@ static int	len_to_max(t_node *stack, int max)
 	return (count);
 }
 
-void	sort_split_insert(t_node **stack_a, t_node **stack_b)
+void	quick_insert(t_node **stack_a, t_node **stack_b)
 {
 	int	max;
 	int	len;

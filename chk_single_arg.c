@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:56:54 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 18:16:26 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 01:14:58 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	create_chk_array(char **str, int count)
 	num = NULL;
 	num = malloc(sizeof(int) * count);
 	if (num == NULL)
-		return (0);
+		exit(1);
 	while (**str != '\0')
 	{
 		while (**str == ' ')
