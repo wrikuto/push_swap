@@ -12,7 +12,7 @@ SRCS = \
 		sort_utils_second.c \
 		sort_three_elements.c \
 		sort_five_or_four.c \
-		split_new_split.c \
+		quick_insert.c \
 		push_swap.c
 
 OBJS	= $(SRCS:.c=.o)
@@ -38,7 +38,3 @@ re: fclean all
 
 
 .PHONY: all clean fclean re
-
-
-# $(NAME): $(OBJS)
-# ar rcs $(NAME) $(OBJS)
