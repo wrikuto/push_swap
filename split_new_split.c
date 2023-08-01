@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 22:21:06 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/01 22:55:33 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,42 +31,44 @@ static void	get_cep_num(t_node *stack_a, int *sn, size_t n)
 		num[i] = get_min_more(stack_a, num[i - 1]);
 		i++;
 	}
-	i = -1;
-	while (i++ < n - 1)
-		sn[i] = num[len / (n * (i + 1))];
+	i = 0;
+	while (i < (n - 1))
+	{
+		sn[i] = num[(len / n) * (i + 1)];
+		i++;
+	}
 	sn[n - 1] = INT_MAX;
-	for (i = 0; i < len; i++)
-		printf("%d\n", num[i]);
+	// printf("sn:\n");
+	// 	printf("%d\n", sn[2]);
 	free(num);
 }
 
-void	push_to_b(t_node **stack_a, t_node **stack_b, size_t n, int *sn)
+void	push_to_b(t_node **s_a, t_node **s_b, int *sn)
 {
 	int		j;
 	size_t	len;
 	size_t	count;
-	size_t	push_count;
 
 	j = 0;
 	count = 0;
-	len = stack_len(*stack_a);
-	while (*stack_a)
+	len = stack_len(*s_a);
+	while (*s_a != NULL)
 	{
+			printf("J: %d\n", j);
 		while (count < len)
 		{
-			if ((*stack_a)->num <= sn[j * 2])
-				pb(stack_a, stack_b);
-			else if ((*stack_a)->num > sn[j * 2] && (*stack_a)->num <= sn[j * 2 + 1])
-				pb_rb(stack_a, stack_b);
+			if ((*s_a)->num <= sn[j])
+				pb(s_a, s_b);
+			else if ((*s_a)->num > sn[j] && (*s_a)->num <= sn[j + 1])
+				pb_rb(s_a, s_b);
 			else
-				ra(stack_a);
+				ra(s_a);
 			count++;
 		}
-		j++;
+		j = j + 2;
 		count = 0;
-		len = stack_len(*stack_a);
+		len = stack_len(*s_a);
 	}
-	grope_last(stack_a, stack_b, sn[n - 2])
 }
 
 static void	groping(t_node **stack_a, t_node **stack_b)
@@ -84,7 +86,7 @@ static void	groping(t_node **stack_a, t_node **stack_b)
 	if (sn == NULL)
 		exit(1);
 	get_cep_num(*stack_a, sn, n);
-	push_to_b(stack_a, stack_b, n, sn);
+	push_to_b(stack_a, stack_b, sn);
 	free(sn);
 }
 
