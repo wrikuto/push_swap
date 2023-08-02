@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_insert.c                                     :+:      :+:    :+:   */
+/*   sort_quick_insert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/02 01:54:48 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 14:30:29 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	groping(t_node **stack_a, t_node **stack_b)
 	free(sn);
 }
 
-static int	len_to_max(t_node *stack, int max)
+static size_t	len_to_max(t_node *stack, int max)
 {
 	size_t	count;
 
