@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:42:44 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/02 17:04:25 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 18:51:16 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	create_util(char **argv, t_node **head)
 			return ;
 	}
 }
-
 
 void	create_list(char **argv, t_node **head)
 {
