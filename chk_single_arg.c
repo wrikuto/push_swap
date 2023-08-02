@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:56:54 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/02 15:32:24 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/02 16:52:07 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	chk_num_string(char *str)
 	i = 0;
 	count = 0;
 	new_str = str;
-	if (str[0] == '\0' || str == NULL)
+	if (str == NULL)
 		return (0);
 	while (str[i] != '\0')
 	{
