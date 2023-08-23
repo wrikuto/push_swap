@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/23 16:03:47 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/23 16:36:25 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_cep_num(t_node *stack_a, int *sn, size_t n)
+static void	get_cep_num(t_node *stack_a, int *sn, size_t s)
 {
 	int			*num;
 	size_t		len;
@@ -30,12 +30,12 @@ static void	get_cep_num(t_node *stack_a, int *sn, size_t n)
 		i++;
 	}
 	i = 0;
-	while (i < (n - 1))
+	while (i < (s - 1))
 	{
-		sn[i] = num[(len / n) * (i + 1)];
+		sn[i] = num[(len / s) * (i + 1)];
 		i++;
 	}
-	sn[n - 1] = INT_MAX;
+	sn[s - 1] = INT_MAX;
 	free(num);
 }
 
@@ -67,7 +67,7 @@ static void	push_to_b(t_node **s_a, t_node **s_b, int *sn)
 
 static void	groping(t_node **stack_a, t_node **stack_b)
 {
-	size_t	n;
+	size_t	s;
 	int		*sn;
 	size_t	len;
 
@@ -79,13 +79,13 @@ static void	groping(t_node **stack_a, t_node **stack_b)
 		return ;
 	}
 	else if (len <= 300)
-		n = stack_len(*stack_a) / 11;
+		s = stack_len(*stack_a) / 11;
 	else
-		n = 4 * (len / 100);
-	sn = malloc(sizeof(int) * n);
+		s = 4 * (len / 100);
+	sn = malloc(sizeof(int) * s);
 	if (sn == NULL)
 		exit(1);
-	get_cep_num(*stack_a, sn, n);
+	get_cep_num(*stack_a, sn, s);
 	push_to_b(stack_a, stack_b, sn);
 	free(sn);
 }
