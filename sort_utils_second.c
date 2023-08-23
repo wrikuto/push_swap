@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:46:36 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/01 19:20:05 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/23 16:04:09 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	list_average(t_node	*stack)
 	return (num / len);
 }
 
-int	get_min_more(t_node *stack, int n)
+// 一つ前の数値を受け取り、それより大きい条件で最も小さい値を取得。
+int	get_next_min(t_node *stack, int n)
 {
 	int		min;
 	t_node	*current;

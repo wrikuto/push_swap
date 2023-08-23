@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:16:38 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/02 17:04:30 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/23 16:03:56 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			count_list(t_node **stack_a);
 int			is_sorted(t_node *stack);
 size_t		stack_len(t_node *stack);
 int			list_average(t_node	*stack);
-int			get_min_more(t_node *stack, int n);
+int			get_next_min(t_node *stack, int n);
 void		pb_rb(t_node **stack_a, t_node **stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:46:29 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/08/02 14:30:29 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/08/23 16:03:47 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	get_cep_num(t_node *stack_a, int *sn, size_t n)
 	num[0] = get_min(stack_a);
 	while (i < len)
 	{
-		num[i] = get_min_more(stack_a, num[i - 1]);
+		num[i] = get_next_min(stack_a, num[i - 1]);
 		i++;
 	}
 	i = 0;
